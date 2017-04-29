@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2017 at 09:13 AM
+-- Generation Time: Apr 29, 2017 at 05:50 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -82,7 +82,8 @@ ALTER TABLE `order_entity`
 -- Indexes for table `order_item_entity`
 --
 ALTER TABLE `order_item_entity`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -98,6 +99,16 @@ ALTER TABLE `order_entity`
 --
 ALTER TABLE `order_item_entity`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `order_item_entity`
+--
+ALTER TABLE `order_item_entity`
+  ADD CONSTRAINT `order_item_entity_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order_entity` (`id`) ON UPDATE CASCADE;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
